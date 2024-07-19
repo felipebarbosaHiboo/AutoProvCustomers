@@ -14,33 +14,27 @@
         <table>
             {{ customer_form.as_table }}
         </table>
-        <div id="additional-fields">
-            {% if dia_static_bgp_with_vlanid_form %}
-                <table>
-                    {{ dia_static_bgp_with_vlanid_form.as_table }}
-                </table>
-            {% endif %}
-        </div>
-        <button type="submit" class="save btn btn-default">Save</button>
+        <div id="additional-fields"></div>
+        <button type="submit" class="save btn btn-default" id="save-button" style="display: none;">Save</button>
     </form>
 
     <script>
         $(document).ready(function() {
             $('#id_service_Type').change(function() {
                 var serviceType = $(this).val();
-                if (serviceType === "1") {  // DIA STATIC BGP WITH VLAN_ID
-                    $.ajax({
-                        url: "{% url 'get_additional_fields' %}",
-                        data: {
-                            'service_type': serviceType
-                        },
-                        success: function(data) {
-                            $('#additional-fields').html(data.html);
-                        }
-                    });
-                } else {
-                    $('#additional-fields').html('');
-                }
+                $.ajax({
+                    url: "{% url 'get_additional_fields' %}",
+                    data: {
+                        'service_type': serviceType
+                    },
+                    success: function(data) {
+                        $('#additional-fields').html(data.html);
+                        $('#save-button').show();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('AJAX Error: ' + status + error);
+                    }
+                });
             });
         });
     </script>
