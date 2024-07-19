@@ -43,8 +43,6 @@ def customer(request):
 
     if request.method == 'POST':
         if customer_form.is_valid():
-            customer_ID = customer_form.cleaned_data['customer_ID']
-            service_ID = customer_form.cleaned_data['service_ID']
             service_Type = customer_form.cleaned_data['service_Type']
 
             form_data = {}
