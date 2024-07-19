@@ -1,5 +1,5 @@
 import os
-from django.http import JsonResponse
+from django.http import JsonResponse, FileResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.conf import settings
@@ -91,6 +91,12 @@ def customer(request):
                     'script_filename': script_filename,
                     'script_filepath': script_filepath
                 })
+
+    if request.method == 'GET' and 'download' in request.GET:
+        script_filename = request.GET['download']
+        script_filepath = os.path.join(settings.MEDIA_ROOT, script_filename)
+        if os.path.exists(script_filepath):
+            return FileResponse(open(script_filepath, 'rb'), as_attachment=True, filename=script_filename)
 
     context = {
         'customer_form': customer_form,

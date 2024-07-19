@@ -1,7 +1,4 @@
-import re
-
 from django import forms
-from django.core.exceptions import ValidationError
 
 from django.core.exceptions import ValidationError
 import re
@@ -199,7 +196,7 @@ class L3vpnBgpServiceForm(forms.Form, BootstrapMixin):
     prefix_ipv4 = forms.CharField(label="IPv4 Network/Mask", initial="10.10.10.10/8", validators=[validate_ipv4_with_mask])
     addr_ipv4_pe = forms.CharField(label="IPv4 Address/Mask PE", initial="10.10.10.10/8", validators=[validate_ipv4_with_mask])
     addr_ipv4_ce = forms.CharField(label="IPv4 Address CE", initial="10.10.10.10/8", validators=[validate_ipv4_with_mask])
-    prefix_ipv6 = forms.GenericIPAddressField(protocol='IPv6', label="IPv6 Network/Mask", initial="2001:db8::/32")
+    prefix_ipv6 = forms.CharField(label="IPv6 Address/Mask PE", initial="2001:db8::1/32", validators=[validate_ipv6_with_mask])
     addr_ipv6_pe = forms.CharField(label="IPv6 Address/Mask PE", initial="2001:db8::1/32", validators=[validate_ipv6_with_mask])
     addr_ipv6_ce = forms.CharField(label="IPv6 Address/Mask PE", initial="2001:db8::1/32", validators=[validate_ipv6_with_mask])
     cir = forms.ChoiceField(choices=CIR_CHOICES, label="Committed Information Rate")

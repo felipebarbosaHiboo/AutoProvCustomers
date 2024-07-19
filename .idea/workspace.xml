@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Replacing working">
+    <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Bootstrap more or less">
+      <change afterPath="$PROJECT_DIR$/service_app/static/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service_app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/forms.html" afterDir="false" />
     </list>
@@ -27,7 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="6_Django_placeholders" />
+        <entry key="$PROJECT_DIR$" value="7_Adding_bootstrap" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,11 +49,12 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "7__Adding__bootstrap"
+    "git-widget-placeholder": "8__front__end__generate__new"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\static\images" />
       <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\service_app" />
     </key>
   </component>
@@ -135,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721413674916</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Bootstrap more or less">
+      <option name="closed" value="true" />
+      <created>1721415025000</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1721415025000</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -144,6 +155,7 @@
     <MESSAGE value="Customer Template, getting new fields based on service type" />
     <MESSAGE value="Generating new file working" />
     <MESSAGE value="Replacing working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replacing working" />
+    <MESSAGE value="Bootstrap more or less" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bootstrap more or less" />
   </component>
 </project>

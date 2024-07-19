@@ -3,40 +3,42 @@
 {% block content %}
     <div class="container mt-5">
         <h1 class="text-center mb-4">Customer Template</h1>
-        <form method="POST" class="post-form">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    {{ customer_form.service_Type.label_tag }}
-                    {{ customer_form.service_Type }}
-                </div>
-            </div>
-            <div id="additional-fields">
-                {% if additional_form %}
-                    {% for field in additional_form %}
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {{ field.label_tag }}
-                                {{ field }}
-                                {% if field.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {% for error in field.errors %}
-                                            {{ error }}
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <button type="submit" class="btn btn-primary mt-3" id="save-button" style="display: none;">Save</button>
-        </form>
 
         {% if config_script %}
+            <button id="generate-new-script" class="btn btn-secondary mb-3">Generate a New Script</button>
+            <a href="?download={{ script_filename }}" class="btn btn-success mb-3">Download Script</a>
             <h2 class="mt-5">Generated Configuration Script</h2>
             <pre style="background-color: black; color: white; padding: 10px;">{{ config_script }}</pre>
-            <a href="{{ script_filepath }}" download="{{ script_filename }}" class="btn btn-success mt-3">Download Script</a>
+        {% else %}
+            <form method="POST" class="post-form">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        {{ customer_form.service_Type.label_tag }}
+                        {{ customer_form.service_Type }}
+                    </div>
+                </div>
+                <div id="additional-fields">
+                    {% if additional_form %}
+                        {% for field in additional_form %}
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    {{ field.label_tag }}
+                                    {{ field }}
+                                    {% if field.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in field.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3" id="save-button" style="display: none;">Save</button>
+            </form>
         {% endif %}
     </div>
 
@@ -80,6 +82,11 @@
                 } else {
                     window.location.href = "{% url 'home' %}";
                 }
+            });
+
+            // Handle "Generate a New Script" button click
+            $('#generate-new-script').on('click', function() {
+                window.location.href = "{% url 'customer' %}";
             });
         });
     </script>
