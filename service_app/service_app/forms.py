@@ -11,13 +11,13 @@ SERVICE_CHOICES = (
 )
 
 class CustomerForm(forms.Form):
-    customerId = forms.IntegerField(max_length=6)
-    serviceId = forms.IntegerField(max_length=4)
-    serviceType = forms.ChoiceField(choices=SERVICE_CHOICES)
+    customer_ID = forms.IntegerField()
+    service_ID = forms.IntegerField()
+    service_Type = forms.ChoiceField(choices=SERVICE_CHOICES)
 
 class DiaStaticBgpWithVlanId_ServiceForm(forms.Form):
     interfaceName = forms.CharField()
-    svlan = forms.IntegerField(max_length=4, max_value=4096)
+    svlan = forms.IntegerField(max_value=4096)
     dataCenter = forms.CharField()
     cir = forms.IntegerField()
     cbs = forms.IntegerField()

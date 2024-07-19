@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="=X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Prov Customer Template</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
     <form method="POST" class="post-form">
         {% csrf_token %}
-        <h1 alifn="center">Customer Tempate</h1>
+        <h1 align="center">Customer Template</h1>
         <table>
-            {{ form.as_table }}
+            {{ customer_form.as_table }}
         </table>
+        <div id="additional-fields">
+            {% if dia_static_bgp_with_vlanid_form %}
+                <table>
+                    {{ dia_static_bgp_with_vlanid_form.as_table }}
+                </table>
+            {% endif %}
+        </div>
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+
+    <script>
+        $(document).ready(function() {
+            $('#id_service_Type').change(function() {
+                var serviceType = $(this).val();
+                if (serviceType === "1") {  // DIA STATIC BGP WITH VLAN_ID
+                    $.ajax({
+                        url: "{% url 'get_additional_fields' %}",
+                        data: {
+                            'service_type': serviceType
+                        },
+                        success: function(data) {
+                            $('#additional-fields').html(data.html);
+                        }
+                    });
+                } else {
+                    $('#additional-fields').html('');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
