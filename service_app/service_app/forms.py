@@ -14,8 +14,6 @@ SERVICE_CHOICES = (
 )
 
 class CustomerForm(forms.Form):
-    customer_ID = forms.IntegerField()
-    service_ID = forms.IntegerField()
     service_Type = forms.ChoiceField(choices=SERVICE_CHOICES)
 
 class DiaDynamicServiceForm(forms.Form):

@@ -105,5 +105,5 @@ def generate_config_script(template_filename, data):
     with open(template_filepath, 'r') as template_file:
         template = template_file.read()
     for key, value in data.items():
-        template = template.replace(f"${{{key}}}", str(value))
+        template = template.replace(f"${{{key.replace('_', '-')}}}", str(value))
     return template
