@@ -1,37 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Prov Customer Template</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <form method="POST" class="post-form">
-        {% csrf_token %}
-        <h1 align="center">Customer Template</h1>
-        <table>
-            {{ customer_form.as_table }}
-        </table>
-        <div id="additional-fields">
-            {% if additional_form %}
-                <table>
-                    {{ additional_form.as_table }}
-                </table>
-            {% endif %}
-        </div>
-        <button type="submit" class="save btn btn-default" id="save-button" style="display: none;">Save</button>
-    </form>
+{% extends "base.html" %}
 
-    {% if config_script %}
-        <h2>Generated Configuration Script</h2>
-        <pre style="background-color: black; color: white; padding: 10px;">{{ config_script }}</pre>
-        <a href="{{ script_filepath }}" download="{{ script_filename }}" class="btn btn-primary">Download Script</a>
-    {% endif %}
+{% block content %}
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Customer Template</h1>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ customer_form.service_Type.label_tag }}
+                    {{ customer_form.service_Type }}
+                </div>
+            </div>
+            <div id="additional-fields">
+                {% if additional_form %}
+                    {% for field in additional_form %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in field.errors %}
+                                            {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" id="save-button" style="display: none;">Save</button>
+        </form>
+
+        {% if config_script %}
+            <h2 class="mt-5">Generated Configuration Script</h2>
+            <pre style="background-color: black; color: white; padding: 10px;">{{ config_script }}</pre>
+            <a href="{{ script_filepath }}" download="{{ script_filename }}" class="btn btn-success mt-3">Download Script</a>
+        {% endif %}
+    </div>
 
     <script>
         $(document).ready(function() {
+            // Reset the form on page load
+            $('form').trigger('reset');
+
+            // Handle service type change
             $('#id_service_Type').change(function() {
                 var serviceType = $(this).val();
                 $.ajax({
@@ -48,7 +62,25 @@
                     }
                 });
             });
+
+            // Handle home link click with confirmation
+            document.getElementById('home-link').addEventListener('click', function(event) {
+                event.preventDefault();
+                var formModified = false;
+                var inputs = document.querySelectorAll('form input, form select');
+                inputs.forEach(function(input) {
+                    if (input.value !== "") {
+                        formModified = true;
+                    }
+                });
+                if (formModified) {
+                    if (confirm('You have unsaved changes. Do you really want to leave?')) {
+                        window.location.href = "{% url 'home' %}";
+                    }
+                } else {
+                    window.location.href = "{% url 'home' %}";
+                }
+            });
         });
     </script>
-</body>
-</html>
+{% endblock %}
