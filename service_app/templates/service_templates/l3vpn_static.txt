@@ -1,0 +1,91 @@
+# ${cust-id}      = <6 Digit Customer ID>
+# ${svc-id}       = <4 Digit Service ID>
+# ${ifd}          = <Interface Name>
+# ${prefix-ipv4}  = <IPv4 Network>/<Mask>
+# ${addr-ipv4-pe} = <IPv4 Address>/<Mask>
+# ${addr-ipv4-ce} = <IPv4 Address>
+# ${prefix-ipv6}  = <IPv6 Network>/<Mask>
+# ${addr-ipv6-pe} = <IPv6 Address>/<Mask>
+# ${addr-ipv6-ce} = <IPv6 Address>
+# ${cir}          = <Committed Information Rate>
+# ${cbs}          = <Committed Burst Size>
+groups {
+    replace: service-customer-${cust-id}-service-${svc-id} {
+        apply-flags omit;
+        interfaces {
+            ${ifd} {
+                hold-time up 2000 down 0;
+                unit 0 {
+                    description "customer-${cust-id}-service-${svc-id}";
+                    filter input customer-${cust-id}-service-${svc-id}-srTCMcb-any;
+                    family inet {
+                        mtu 1500;
+                        address ${addr-ipv4-pe};
+                    }
+                    family inet6 {
+                        mtu 1500;
+                        address ${addr-ipv6-pe};
+                    }
+                }
+            }
+        }
+        firewall {
+            three-color-policer customer-${cust-id}-service-${svc-id}-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate ${cir};
+                    committed-burst-size ${cbs};
+                    excess-burst-size ${cbs};
+                }
+                action loss-priority high then discard;
+            }
+            family any {
+                filter customer-${cust-id}-service-${svc-id}-srTCMcb-any {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-${cust-id}-service-${svc-id}-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-${cust-id}-service-${svc-id}-tcp shaping-rate ${cir} burst-size ${cbs};
+            interfaces {
+                ${ifd} {
+                    forwarding-class business;
+                    output-traffic-control-profile customer-${cust-id}-service-${svc-id}-tcp;
+                }
+            }
+        }
+        routing-instances {
+            customer-${cust-id}-service-${svc-id} {
+                instance-type vrf;
+                vrf-target target:1:${cust-id}${svc-id};
+                vrf-table-label;
+                routing-options {
+                    rib customer-${cust-id}-service-${svc-id}.inet.0 {
+                        static {
+                            route ${prefix-ipv4} next-hop ${addr-ipv4-ce} as-path origin igp;
+                        }
+                    }
+                    rib customer-${cust-id}-service-${svc-id}.inet6.0 {
+                        static {
+                            route ${prefix-ipv6} next-hop ${addr-ipv6-ce} as-path origin igp;
+                        }
+                    }
+                }
+                protocols {
+                    evpn {
+                        ip-prefix-routes {
+                            advertise direct-nexthop;
+                            encapsulation mpls;
+                        }
+                    }
+                }
+                interface ${ifd}.0;
+            }
+        }
+        protocols router-advertisement interface ${ifd}.0;
+    }
+}
+apply-groups service-customer-${cust-id}-service-${svc-id};

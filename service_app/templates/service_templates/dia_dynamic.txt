@@ -1,0 +1,60 @@
+# ${cust-id} = <6 Digit Customer ID>
+# ${svc-id}  = <4 Digit Service ID>
+# ${ifd}     = <Interface Name>
+# ${svlan}   = <Service VLAN ID>
+# ${pwht-dc} = <dc01|dc02>
+# ${cir}     = <Committed Information Rate>
+# ${cbs}     = <Committed Burst Size>
+groups {
+    replace: service-customer-${cust-id}-service-${svc-id} {
+        apply-flags omit;
+        interfaces {
+            ${ifd} {
+                hold-time up 2000 down 0;
+                encapsulation ethernet-ccc;
+                mtu 1514;
+                unit 0 {
+                    description "customer-${cust-id}-service-${svc-id}";
+                    input-vlan-map push vlan-id ${svlan};
+                    output-vlan-map pop;
+                    family ccc filter input customer-${cust-id}-service-${svc-id}-srTCMcb-ccc;
+                }
+            }
+        }
+        firewall {
+            three-color-policer customer-${cust-id}-service-${svc-id}-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate ${cir};
+                    committed-burst-size ${cbs};
+                    excess-burst-size ${cbs};
+                }
+                action loss-priority high then discard;
+            }
+            family ccc {
+                filter customer-${cust-id}-service-${svc-id}-srTCMcb-ccc {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-${cust-id}-service-${svc-id}-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-${cust-id}-service-${svc-id}-tcp shaping-rate ${cir} burst-size ${cbs};
+            interfaces {
+                ${ifd} {
+                    forwarding-class best-effort;
+                    output-traffic-control-profile customer-${cust-id}-service-${svc-id}-tcp;
+                }
+            }
+        }
+        routing-instances {
+            hib-public-dynamic-vpws-${pwht-dc} {
+                protocols evpn group hib-public-dynamic-vpws-${pwht-dc} interface ${ifd}.0;
+                interface ${ifd}.0;
+            }
+        }
+    }
+}
+apply-groups service-customer-${cust-id}-service-${svc-id};

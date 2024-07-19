@@ -1,0 +1,156 @@
+# ${cust-id}      = <6 Digit Customer ID>
+# ${svc-id}       = <4 Digit Service ID>
+# ${cust-asn}       = <Autonomous System Number>
+# ${ifd}          = <Interface Name>
+# ${prefix-ipv4}  = <IPv4 Network>/<Mask>
+# ${addr-ipv4-pe} = <IPv4 Address>/<Mask>
+# ${addr-ipv4-ce} = <IPv4 Address>
+# ${prefix-ipv6}  = <IPv6 Network>/<Mask>
+# ${addr-ipv6-pe} = <IPv6 Address>/<Mask>
+# ${addr-ipv6-ce} = <IPv6 Address>
+# ${cir}          = <Committed Information Rate>
+# ${cbs}          = <Committed Burst Size>
+groups {
+    replace: service-customer-${cust-id}-service-${svc-id} {
+        apply-flags omit;
+        interfaces {
+            ${ifd} {
+                hold-time up 2000 down 0;
+                unit 0 {
+                    description "customer-${cust-id}-service-${svc-id}";
+                    filter input customer-${cust-id}-service-${svc-id}-srTCMcb-any;
+                    family inet {
+                        mtu 1500;
+                        address ${addr-ipv4-pe};
+                    }
+                    family inet6 {
+                        mtu 1500;
+                        address ${addr-ipv6-pe};
+                    }
+                }
+            }
+        }
+        firewall {
+            three-color-policer customer-${cust-id}-service-${svc-id}-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate ${cir};
+                    committed-burst-size ${cbs};
+                    excess-burst-size ${cbs};
+                }
+                action loss-priority high then discard;
+            }
+            family any {
+                filter customer-${cust-id}-service-${svc-id}-srTCMcb-any {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-${cust-id}-service-${svc-id}-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-${cust-id}-service-${svc-id}-tcp shaping-rate ${cir} burst-size ${cbs};
+            interfaces {
+                ${ifd} {
+                    forwarding-class best-effort;
+                    output-traffic-control-profile customer-${cust-id}-service-${svc-id}-tcp;
+                }
+            }
+        }
+        policy-options {
+            prefix-list customer-${cust-id}-service-${svc-id}-inet ${prefix-ipv4};
+            prefix-list customer-${cust-id}-service-${svc-id}-inet6 ${prefix-ipv6};
+            policy-statement customer-${cust-id}-service-${svc-id}-bgp-export {
+                term protections {
+                    from policy protections-customer-public-export;
+                    then next term;
+                }
+                term attributes {
+                    /* Matching on internal communities must be done before this */
+                    from policy attributes-customer-public-export;
+                    then next term;
+                }
+                /* Activate for default route customers */
+                term default {
+                    from policy match-default;
+                    then accept;
+                }
+                /* Activate for full table customers */
+                inactive: term full {
+                    from policy match-summaries-24-48;
+                    then accept;
+                }
+                then reject;
+            }
+            policy-statement customer-${cust-id}-service-${svc-id}-bgp-import {
+                term protections {
+                    from policy protections-customer-public-import;
+                    then next term;
+                }
+                term attributes {
+                    from policy attributes-customer-public-import;
+                    then next term;
+                }
+                term customer-prefixes-inet {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-${cust-id}-service-${svc-id}-inet orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                term customer-prefixes-inet6 {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-${cust-id}-service-${svc-id}-inet6 orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                then reject;
+            }
+        }
+        routing-instances {
+            hib-public {
+                protocols {
+                    bgp {
+                        group customer-${cust-id}-service-${svc-id}-inet {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet unicast;
+                            export customer-${cust-id}-service-${svc-id}-bgp-export;
+                            import customer-${cust-id}-service-${svc-id}-bgp-import;
+                            peer-as ${cust-asn};
+                            neighbor ${addr-ipv4-ce};
+                        }
+                        group customer-${cust-id}-service-${svc-id}-inet6 {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet6 unicast;
+                            export customer-${cust-id}-service-${svc-id}-bgp-export;
+                            import customer-${cust-id}-service-${svc-id}-bgp-import;
+                            peer-as ${cust-asn};
+                            neighbor ${addr-ipv6-ce};
+                        }
+                    }
+                }
+                interface ${ifd}.0;
+            }
+        }
+        protocols router-advertisement interface ${ifd}.0 apply-groups protocols-ra-hib-public;
+    }
+}
+apply-groups service-customer-${cust-id}-service-${svc-id};

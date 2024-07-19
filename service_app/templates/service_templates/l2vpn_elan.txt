@@ -1,0 +1,70 @@
+# ${cust-id}      = <6 Digit Customer ID>
+# ${svc-id}       = <4 Digit Service ID>
+# ${ifd}          = <Interface Name>
+# ${mtu}          = <MTU: 1522|9216>
+# ${vpls-pref}    = <VPLS multi-homing preference: primary|backup>
+# ${vpls-site-id} = <VPLS Site Identifier>
+# ${cir}          = <Committed Information Rate>
+# ${cbs}          = <Committed Burst Size>
+groups {
+    replace: service-customer-${cust-id}-service-${svc-id} {
+        apply-flags omit;
+        interfaces {
+            ${ifd} {
+                description "customer-${cust-id}-service-${svc-id}";
+                hold-time up 2000 down 0;
+                encapsulation ethernet-vpls;
+                mtu ${mtu};
+                unit 0 filter input customer-${cust-id}-service-${svc-id}-srTCMcb-any;
+            }
+        }
+        firewall {
+            three-color-policer customer-${cust-id}-service-${svc-id}-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate ${cir};
+                    committed-burst-size ${cbs};
+                    excess-burst-size ${cbs};
+                }
+                action loss-priority high then discard;
+            }
+            family any {
+                filter customer-${cust-id}-service-${svc-id}-srTCMcb-any {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-${cust-id}-service-${svc-id}-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-${cust-id}-service-${svc-id}-tcp shaping-rate ${cir} burst-size ${cbs};
+            interfaces {
+                ${ifd} {
+                    forwarding-class business;
+                    output-traffic-control-profile customer-${cust-id}-service-${svc-id}-tcp;
+                }
+            }
+        }
+        routing-instances {
+            customer-${cust-id}-service-${svc-id} {
+                instance-type vpls;
+                vrf-target target:1:${cust-id}${svc-id};
+                protocols {
+                    vpls {
+                        site customer-${cust-id}-service-${svc-id}-${ifd} {
+                            interface ${ifd}.0;
+                            site-identifier ${vpls-site-id};
+                            multi-homing;
+                            site-preference ${vpls-pref};
+                            active-interface any;
+                        }
+                        no-tunnel-services;
+                    }
+                }
+                interface ${ifd}.0;
+            }
+        }
+    }
+}
+apply-groups service-customer-${cust-id}-service-${svc-id};

@@ -14,9 +14,21 @@
         <table>
             {{ customer_form.as_table }}
         </table>
-        <div id="additional-fields"></div>
+        <div id="additional-fields">
+            {% if additional_form %}
+                <table>
+                    {{ additional_form.as_table }}
+                </table>
+            {% endif %}
+        </div>
         <button type="submit" class="save btn btn-default" id="save-button" style="display: none;">Save</button>
     </form>
+
+    {% if config_script %}
+        <h2>Generated Configuration Script</h2>
+        <pre style="background-color: black; color: white; padding: 10px;">{{ config_script }}</pre>
+        <a href="{{ script_filepath }}" download="{{ script_filename }}" class="btn btn-primary">Download Script</a>
+    {% endif %}
 
     <script>
         $(document).ready(function() {

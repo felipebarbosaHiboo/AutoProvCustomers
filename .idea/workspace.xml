@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Customer Template, getting new fields based on service type">
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/dia_dynamic.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp_with_vlanid.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_elan.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_eline.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_bgp.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_static.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="2_Django_form" />
+        <entry key="$PROJECT_DIR$" value="3_Django_form_all_fields_working" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -51,7 +55,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "3__Django__form__all__fields__working"
+    "git-widget-placeholder": "4__Django__extract__text"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -107,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721404624968</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Customer Template, getting new fields based on service type">
+      <option name="closed" value="true" />
+      <created>1721409618219</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721409618219</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
