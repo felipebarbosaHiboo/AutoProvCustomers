@@ -1,0 +1,83 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"88540db4-1de2-4471-bbda-df3598a1733e\" name=\"Changes\" comment=\"Replacing working\">\r\n      <change afterPath=\"$PROJECT_DIR$/service_app/templates/base.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/service_app/service_app/forms.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/service_app/service_app/forms.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/service_app/service_app/views.py\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/service_app/service_app/views.py\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/service_app/templates/forms.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/service_app/templates/forms.html\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"5_Django_replace_txt_patterns\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2jSrZWU8yQfgck3e0dgvuSJOwBD\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"6__Django__placeholders\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\felipebarbosa\\PycharmProjects\\AutoProv\\service_app\\service_app\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-0509580d9d50-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.14494.241\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"88540db4-1de2-4471-bbda-df3598a1733e\" name=\"Changes\" comment=\"\" />\r\n      <created>1721391374951</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1721391374951</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First Commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721391404000</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721391404000</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Beginner\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721402724233</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721402724233</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Beginner\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721402749277</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721402749277</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Customer Template, getting new fields based on service type\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721404624968</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721404624968</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Customer Template, getting new fields based on service type\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721409618219</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721409618219</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Generating new file working\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721410543802</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721410543802</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Replacing working\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1721411586151</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1721411586151</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"8\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"First Commit\" />\r\n    <MESSAGE value=\"Beginner\" />\r\n    <MESSAGE value=\"Customer Template, getting new fields based on service type\" />\r\n    <MESSAGE value=\"Generating new file working\" />\r\n    <MESSAGE value=\"Replacing working\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Replacing working\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,11 +5,19 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Replacing working">
+-      <change afterPath="$PROJECT_DIR$/service_app/templates/base.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/forms.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/views.py" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/forms.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/read.me" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/admin.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/apps.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/asgi.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/forms.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/models.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/settings.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/tests.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/urls.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/views.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/service_app/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/wsgi.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/urls.py" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -46,12 +54,16 @@
+   <component name="PropertiesComponent"><![CDATA[{
+   "keyToString": {
+     "DefaultHtmlFileTemplate": "HTML File",
++    "Python.__init__.executor": "Run",
++    "Python.urls.executor": "Run",
++    "Python.views.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+     "git-widget-placeholder": "6__Django__placeholders"
+   }
+ }]]></component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app" />
+       <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\service_app" />
+     </key>
+   </component>
+diff --git a/service_app/services/migrations/__init__.py b/service_app/services/migrations/__init__.py
+deleted file mode 100644
+diff --git a/service_app/manage.py b/manage.py
+rename from service_app/manage.py
+rename to manage.py
+diff --git a/service_app/service_app/asgi.py b/services/asgi.py
+rename from service_app/service_app/asgi.py
+rename to services/asgi.py
+diff --git a/service_app/service_app/settings.py b/service_app/settings.py
+rename from service_app/service_app/settings.py
+rename to service_app/settings.py
+diff --git a/service_app/service_app/wsgi.py b/service_app/wsgi.py
+rename from service_app/service_app/wsgi.py
+rename to service_app/wsgi.py
+diff --git a/service_app/service_app/admin.py b/services/admin.py
+rename from service_app/service_app/admin.py
+rename to services/admin.py
+diff --git a/service_app/service_app/apps.py b/services/apps.py
+rename from service_app/service_app/apps.py
+rename to services/apps.py
+diff --git a/service_app/service_app/tests.py b/service_app/tests.py
+rename from service_app/service_app/tests.py
+rename to service_app/tests.py
+diff --git a/service_app/service_app/models.py b/services/models.py
+rename from service_app/service_app/models.py
+rename to services/models.py
+diff --git a/service_app/services/__init__.py b/services/__init__.py
+rename from service_app/services/__init__.py
+rename to services/__init__.py
+diff --git a/service_app/service_app/forms.py b/service_app/forms.py
+rename from service_app/service_app/forms.py
+rename to service_app/forms.py

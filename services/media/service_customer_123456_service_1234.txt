@@ -1,0 +1,242 @@
+# 123456      = <6 Digit Customer ID>
+# 1234       = <4 Digit Service ID>
+# 65000       = <Autonomous System Number>
+# xe-0/0/0          = <Interface Name>
+# 1245          = <Vlan-ID>
+# 23          = <Unit-number>
+# 10.10.10.10/8  = <IPv4 Network>/<Mask>
+# 10.10.10.10/8  = <IPv4 Network>/<Mask>
+# 10.10.10.10/8 = <IPv4 Address>/<Mask>
+# 10.10.10.10/8 = <IPv4 Address>
+# 10.10.10.10/8 = <IPv4 Address>
+# 10.10.10.10/8 = <IPv4 Address>
+# 2001:db8::1/32  = <IPv6 Network>/<Mask>
+# 2001:db8::1/32 = <IPv6 Address>/<Mask>
+# 2001:db8::1/32 = <IPv6 Address>
+# 2001:db8::1/32 = <IPv6 Address>
+# 2001:db8::1/32 = <IPv6 Address>
+# 100m          = <Committed Information Rate>
+# 10.0          = <Committed Burst Size>
+# Key negotiated with customer     = <authentication-key-string-is-in-md5-hash-no-need-to-replace-it-Hiboonet!>
+groups {
+    replace: service-customer-123456-service-1234 {
+        apply-flags omit;
+        interfaces {
+            xe-0/0/0 {
+                hold-time up 2000 down 0;
+                flexible-vlan-tagging;
+				mtu 9216;
+				hierarchical-scheduler;
+				encapsulation flexible-ethernet-services;
+				unit 23 {
+                    vlan-id 1245;
+					description "customer-123456-service-1234";
+                    filter input customer-123456-service-1234-srTCMcb-any;
+                    family inet {
+                        mtu 1500;
+                        address 10.10.10.10/8;
+                    }
+                    family inet6 {
+                        mtu 1500;
+                        address 2001:db8::1/32;
+                    }
+                }
+            }
+        }
+        firewall {
+            three-color-policer customer-123456-service-1234-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate 100m;
+                    committed-burst-size 10.0;
+                    excess-burst-size 10.0;
+                }
+                action loss-priority high then discard;
+            }
+            family any {
+                filter customer-123456-service-1234-srTCMcb-any {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-123456-service-1234-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-123456-service-1234-tcp shaping-rate 100m burst-size 10.0;
+            interfaces {
+                xe-0/0/0  {
+						unit 23	{
+                    forwarding-class best-effort;
+                    output-traffic-control-profile customer-123456-service-1234-tcp;
+                            }
+					}
+            }
+        }
+        policy-options {
+            prefix-list customer-123456-service-1234-inet {
+																		10.10.10.10/8;
+																		10.10.10.10/8;
+																    }
+			prefix-list customer-123456-service-1234-inet6 2001:db8::1/32;
+            policy-statement customer-123456-service-1234-bgp-export {
+                term protections {
+                    from policy protections-customer-public-export;
+                    then next term;
+                }
+                term attributes {
+                    /* Matching on internal communities must be done before this */
+                    from policy attributes-customer-public-export;
+                    then next term;
+                }
+                /* Activate for default route customers */
+                term default {
+                    from policy match-default;
+                    then accept;
+                }
+                /* Activate for full table customers */
+                inactive: term full {
+                    from policy match-summaries-24-48;
+                    then accept;
+                }
+                then reject;
+            }
+            policy-statement customer-123456-service-1234-bgp-import {
+                term protections {
+                    from policy protections-customer-public-import;
+                    then next term;
+                }
+                term attributes {
+                    from policy attributes-customer-public-import;
+                    then next term;
+                }
+                term customer-prefixes-inet {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-123456-service-1234-inet orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                term customer-prefixes-inet6 {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-123456-service-1234-inet6 orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                then reject;
+            }
+        }
+        routing-instances {
+            hib-public {
+                protocols {
+                    bgp {
+                        group customer-123456-service-1234-inet {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet unicast;
+							authentication-key "$9$M1tWXN4oGji.s2mTF/0OhSrl87-db"; ## SECRET-DATA
+                            export customer-123456-service-1234-bgp-export;
+                            import customer-123456-service-1234-bgp-import;
+                            peer-as 65000;
+                            authentication-key Key negotiated with customer;
+							neighbor 10.10.10.10/8;
+							neighbor 10.10.10.10/8;
+                        }
+                        group customer-123456-service-1234-inet6 {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet6 unicast;
+							authentication-key "$9$M1tWXN4oGji.s2mTF/0OhSrl87-db"; ## SECRET-DATA
+							export customer-123456-service-1234-bgp-export;
+                            import customer-123456-service-1234-bgp-import;
+                            peer-as 65000;
+                            neighbor 2001:db8::1/32;
+							neighbor 2001:db8::1/32;
+                        }
+                    }
+                }
+                interface xe-0/0/0.23;
+            }
+        }
+
+	services {
+		rpm {
+			probe hib-public-external {
+				test customer-123456-inet-ce1 {
+					probe-type icmp-ping;
+					target address 10.10.10.10/8;
+					probe-count 10;
+					probe-interval 1;
+					test-interval 20;
+					source-address 10.10.10.10/8;
+					routing-instance hib-public;
+					thresholds {
+						total-loss 3;
+						}
+					traps [ probe-failure test-failure ];
+					}
+				test customer-123456-inet-ce2 {
+					probe-type icmp-ping;
+					target address 10.10.10.10/8;
+					probe-count 10;
+					probe-interval 1;
+					test-interval 20;
+					source-address 10.10.10.10/8;
+					routing-instance hib-public;
+					thresholds {
+						total-loss 3;
+						}
+					traps [ probe-failure test-failure ];
+					}
+				test customer-123456-inet6-ce1 {
+					probe-type icmp6-ping;
+					target inet6-address 2001:db8::1/32;
+					inet6-options {
+						source-address 2001:db8::1/32;
+						}
+					probe-count 10;
+					probe-interval 1;
+					test-interval 20;
+					routing-instance hib-public;
+					thresholds {
+						total-loss 3;
+						}
+					traps [ probe-failure test-failure ];
+				}
+				test customer-123456-inet6-ce2 {
+					probe-type icmp6-ping;
+					target inet6-address 2001:db8::1/32;
+					inet6-options {
+						source-address 2001:db8::1/32;
+						}
+					probe-count 10;
+					probe-interval 1;
+					test-interval 20;
+					routing-instance hib-public;
+					thresholds {
+						total-loss 3;
+						}
+					traps [ probe-failure test-failure ];
+				}
+			}
+		}
+	}
+	protocols router-advertisement interface xe-0/0/0.23 apply-groups protocols-ra-hib-public;
+	}
+}
+apply-groups service-customer-123456-service-1234;

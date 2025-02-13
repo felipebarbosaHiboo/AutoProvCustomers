@@ -1,0 +1,156 @@
+# 123123      = <6 Digit Customer ID>
+# 1231       = <4 Digit Service ID>
+# 123       = <Autonomous System Number>
+# 123          = <Interface Name>
+# 123  = <IPv4 Network>/<Mask>
+# 123 = <IPv4 Address>/<Mask>
+# 123 = <IPv4 Address>
+# 123  = <IPv6 Network>/<Mask>
+# 123 = <IPv6 Address>/<Mask>
+# 123 = <IPv6 Address>
+# 123          = <Committed Information Rate>
+# 123          = <Committed Burst Size>
+groups {
+    replace: service-customer-123123-service-1231 {
+        apply-flags omit;
+        interfaces {
+            123 {
+                hold-time up 2000 down 0;
+                unit 0 {
+                    description "customer-123123-service-1231";
+                    filter input customer-123123-service-1231-srTCMcb-any;
+                    family inet {
+                        mtu 1500;
+                        address 123;
+                    }
+                    family inet6 {
+                        mtu 1500;
+                        address 123;
+                    }
+                }
+            }
+        }
+        firewall {
+            three-color-policer customer-123123-service-1231-srTCMcb {
+                single-rate {
+                    color-blind;
+                    committed-information-rate 123;
+                    committed-burst-size 123;
+                    excess-burst-size 123;
+                }
+                action loss-priority high then discard;
+            }
+            family any {
+                filter customer-123123-service-1231-srTCMcb-any {
+                    interface-specific;
+                    term police {
+                        then three-color-policer single-rate customer-123123-service-1231-srTCMcb;
+                    }
+                }
+            }
+        }
+        class-of-service {
+            traffic-control-profiles customer-123123-service-1231-tcp shaping-rate 123 burst-size 123;
+            interfaces {
+                123 {
+                    forwarding-class best-effort;
+                    output-traffic-control-profile customer-123123-service-1231-tcp;
+                }
+            }
+        }
+        policy-options {
+            prefix-list customer-123123-service-1231-inet 123;
+            prefix-list customer-123123-service-1231-inet6 123;
+            policy-statement customer-123123-service-1231-bgp-export {
+                term protections {
+                    from policy protections-customer-public-export;
+                    then next term;
+                }
+                term attributes {
+                    /* Matching on internal communities must be done before this */
+                    from policy attributes-customer-public-export;
+                    then next term;
+                }
+                /* Activate for default route customers */
+                term default {
+                    from policy match-default;
+                    then accept;
+                }
+                /* Activate for full table customers */
+                inactive: term full {
+                    from policy match-summaries-24-48;
+                    then accept;
+                }
+                then reject;
+            }
+            policy-statement customer-123123-service-1231-bgp-import {
+                term protections {
+                    from policy protections-customer-public-import;
+                    then next term;
+                }
+                term attributes {
+                    from policy attributes-customer-public-import;
+                    then next term;
+                }
+                term customer-prefixes-inet {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-123123-service-1231-inet orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                term customer-prefixes-inet6 {
+                    from {
+                        protocol bgp;
+                        prefix-list-filter customer-123123-service-1231-inet6 orlonger;
+                    }
+                    then {
+                        apply-groups bgp-common-attributes;
+                        community add route-type-customer;
+                        accept;
+                    }
+                }
+                then reject;
+            }
+        }
+        routing-instances {
+            hib-public {
+                protocols {
+                    bgp {
+                        group customer-123123-service-1231-inet {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet unicast;
+                            export customer-123123-service-1231-bgp-export;
+                            import customer-123123-service-1231-bgp-import;
+                            peer-as 123;
+                            neighbor 123;
+                        }
+                        group customer-123123-service-1231-inet6 {
+                            type external;
+                            hold-time 30;
+                            passive;
+                            ttl 1;
+                            remove-private all;
+                            family inet6 unicast;
+                            export customer-123123-service-1231-bgp-export;
+                            import customer-123123-service-1231-bgp-import;
+                            peer-as 123;
+                            neighbor 123;
+                        }
+                    }
+                }
+                interface 123.0;
+            }
+        }
+        protocols router-advertisement interface 123.0 apply-groups protocols-ra-hib-public;
+    }
+}
+apply-groups service-customer-123123-service-1231;

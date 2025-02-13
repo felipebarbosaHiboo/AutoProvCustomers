@@ -1,0 +1,93 @@
+Index: service_app/service_app/__init__.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/service_app/service_app/__init__.py b/read.me
+rename from service_app/service_app/__init__.py
+rename to read.me
+--- a/service_app/service_app/__init__.py	
++++ b/read.me	
+@@ -1,0 +1,9 @@
++start by following the steps:
++
++1 - cd C:\Users\felipebarbosa\PycharmProjects\AutoProv
++2 - .\venv\Scripts\activate
++3 - cd .\service_app\
++4 - python manage.py runserver
++5 - http://127.0.0.1:8000/
++
++
+Index: service_app/urls.py
+===================================================================
+diff --git a/service_app/urls.py b/service_app/urls.py
+deleted file mode 100644
+--- a/service_app/urls.py	
++++ /dev/null	
+@@ -1,12 +0,0 @@
+-from django.contrib import admin
+-from django.urls import path, include
+-from django.conf import settings
+-from django.conf.urls.static import static
+-
+-urlpatterns = [
+-    path('admin/', admin.site.urls),
+-    path('', include('service_app.urls')),
+-]
+-
+-if settings.DEBUG:
+-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+Index: service_app/service_app/urls.py
+===================================================================
+diff --git a/service_app/service_app/urls.py b/service_app/service_app/urls.py
+deleted file mode 100644
+--- a/service_app/service_app/urls.py	
++++ /dev/null	
+@@ -1,8 +0,0 @@
+-#urls.py
+-from django.urls import path
+-from .views import customer, get_additional_fields
+-
+-urlpatterns = [
+-    path('customer/', customer, name='customer'),
+-    path('get-additional-fields/', get_additional_fields, name='get_additional_fields'),
+-]
+Index: services/urls.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/services/urls.py b/services/urls.py
+new file mode 100644
+--- /dev/null	
++++ b/services/urls.py	
+@@ -0,0 +1,10 @@
++from django.contrib import admin
++from django.urls import path
++from services import views
++
++urlpatterns = [
++    path('admin/', admin.site.urls),
++    path('', views.index, name='index'),  # ✅ Home page route
++    path('customer/', views.customer_view, name='customer'),
++    path('get-additional-fields/', views.get_additional_fields, name='get_additional_fields'),
++]
+Index: service_app/service_app/views.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/service_app/service_app/views.py b/services/views.py
+rename from service_app/service_app/views.py
+rename to services/views.py
+--- a/service_app/service_app/views.py	
++++ b/services/views.py	
+@@ -5,7 +5,7 @@
+ from django.conf import settings
+ from django import forms
+ 
+-from .forms import (
++from service_app.forms import (
+     DiaStaticBgpWithVlanIdServiceForm, DiaStaticBgpServiceForm, DiaStaticServiceForm,
+     L2vpnElanServiceForm, L2vpnElineServiceForm, L3vpnBgpServiceForm, L3vpnStaticServiceForm, DiaDynamicServiceForm,
+     CustomerForm
