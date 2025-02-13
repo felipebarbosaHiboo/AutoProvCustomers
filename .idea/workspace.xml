@@ -5,13 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Bootstrap more or less">
-      <change afterPath="$PROJECT_DIR$/service_app/static/images/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/service_app/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/service_app/templates/forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoProv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/asgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/service_app/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/services/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/static/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/services/static/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/additional_fields.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/additional_fields.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_dynamic.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_dynamic.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static_bgp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp_with_vlanid.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static_bgp_with_vlanid.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_elan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l2vpn_elan.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_eline.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l2vpn_eline.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_bgp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l3vpn_bgp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_static.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l3vpn_static.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +52,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="7_Adding_bootstrap" />
+        <entry key="$PROJECT_DIR$" value="8_front_end_generate_new" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,13 +72,16 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "8__front__end__generate__new"
+    "git-widget-placeholder": "9__new__structure"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\services" />
+      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv" />
+      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\services" />
+      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\auto_prov_project" />
       <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\static\images" />
-      <recent name="C:\Users\felipebarbosa\PycharmProjects\AutoProv\service_app\service_app" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -148,6 +174,17 @@
     </task>
     <option name="localTasksCounter" value="10" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First Commit" />

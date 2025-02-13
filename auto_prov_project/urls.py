@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('service_app.urls')),
+    # Include the URLs from your app (make sure the app's urls.py is in the services folder)
+    path('', include('services.urls')),
 ]
 
 if settings.DEBUG:
