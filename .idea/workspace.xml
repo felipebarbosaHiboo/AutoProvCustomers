@@ -4,37 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="Bootstrap more or less">
+    <list default="true" id="88540db4-1de2-4471-bbda-df3598a1733e" name="Changes" comment="working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoProv.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/asgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/service_app/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/auto_prov_project/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/services/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/services/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/static/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/services/static/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/additional_fields.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/additional_fields.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/forms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_dynamic.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_dynamic.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static_bgp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/dia_static_bgp_with_vlanid.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/dia_static_bgp_with_vlanid.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_elan.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l2vpn_elan.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l2vpn_eline.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l2vpn_eline.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_bgp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l3vpn_bgp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/templates/service_templates/l3vpn_static.txt" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/service_templates/l3vpn_static.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/templates/forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/services/templates/forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="8_front_end_generate_new" />
+        <entry key="$PROJECT_DIR$" value="9_new_structure" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -72,7 +46,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "9__new__structure"
+    "git-widget-placeholder": "10__cache"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -172,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721415025000</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="working">
+      <option name="closed" value="true" />
+      <created>1739421779761</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1739421779761</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +175,7 @@
     <MESSAGE value="Generating new file working" />
     <MESSAGE value="Replacing working" />
     <MESSAGE value="Bootstrap more or less" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bootstrap more or less" />
+    <MESSAGE value="working" />
+    <option name="LAST_COMMIT_MESSAGE" value="working" />
   </component>
 </project>

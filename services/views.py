@@ -11,7 +11,7 @@ from .forms import (
     CustomerForm
 )
 
-TEMPLATE_DIR = os.path.join(settings.BASE_DIR, 'templates', 'service_templates')
+TEMPLATE_DIR = os.path.join(settings.BASE_DIR, 'services', 'templates', 'service_templates')
 
 def get_additional_fields(request):
     service_type = request.GET.get('service_type')
