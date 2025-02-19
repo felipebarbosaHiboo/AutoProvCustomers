@@ -1,0 +1,133 @@
+# AutoProv Service Provisioning System
+
+AutoProv is a Django-based service provisioning application that dynamically generates configuration files based on user inputs. Users can select a service type, fill out a dynamically generated form, and have the application produce a text-based configuration file. The project also includes features like auto-saving form data via localStorage, dynamic field loading through AJAX, and file download functionality.
+
+## Table of Contents
+
+- [Features](#features)
+- [Folder Structure](#folder-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Dynamic Form Generation:**
+  Based on the service type selected by the user, the application loads and displays additional form fields.
+
+- **Template-Based File Generation:**
+  The application reads text-based templates with placeholders and replaces them with user-provided data to generate configuration files.
+
+- **Autosave Functionality:**
+  Uses client-side JavaScript (localStorage) to auto-save user inputs so that data is preserved on page reload.
+
+- **AJAX-Powered Field Loading:**
+  Additional fields are loaded dynamically using AJAX based on the selected service type.
+
+- **File Download:**
+  Generated configuration files can be reviewed on-screen and downloaded directly.
+
+## Folder Structure
+
+Below is the recommended folder structure for the project:
+
+AutoProv/                     # Root folder of your project
+├── manage.py                 # Django’s management script
+├── venv/                     # Your virtual environment (or similar)
+├── db.sqlite3                # Your SQLite database (if used)
+├── auto_prov_project/        # Project configuration folder
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py           # Global settings (database, middleware, etc.)
+│   ├── urls.py               # Project-level URL configuration
+│   └── wsgi.py
+└── services/                 # Your dedicated app folder
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── forms.py              # All your dynamic forms and validation logic
+    ├── models.py             # (Optional) Database models
+    ├── tests.py
+    ├── urls.py               # App-level URL configuration
+    ├── views.py              # Application logic and view functions
+    ├── templates/            # App-specific templates
+    │   └── services/
+    │       ├── base.html
+    │       ├── forms.html    # Your form page (with autosave code, etc.)
+    │       └── service_templates/  # Text templates for configuration files
+    │           ├── dia_dynamic.txt
+    │           ├── dia_static.txt
+    │           ├── dia_static_bgp.txt
+    │           ├── dia_static_bgp_with_vlanid.txt
+    │           ├── 12vpn_elan.txt
+    │           ├── 12vpn_eline.txt
+    │           ├── 13vpn_bgp.txt
+    │           └── 13vpn_static.txt
+    └── static/               # App-specific static files (CSS, JS, images)
+        └── services/
+            └── images/
+                └── logo.png
+
+
+
+## Installation
+
+1. **Clone the Repository:**
+
+
+   git clone https://github.com/yourusername/autoprov.git
+   cd autoprov
+
+2. **Create and Activate a Virtual Environment:**
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+
+3. **Install Dependencies:**
+pip install -r requirements.txt
+
+4. **Apply Migrations:**
+python manage.py migrate
+
+5. **Run the Development Server:**
+python manage.py runserver
+
+Access the Application:
+
+Open your browser and navigate to http://127.0.0.1:8000.
+
+Usage
+Select a Service Type:
+On the home page, choose a service type from the dropdown. The application will load additional form fields via AJAX based on your selection.
+
+Fill Out the Form:
+Enter the required information. As you type, your data will be auto-saved in your browser using localStorage.
+
+Generate and Download Configuration:
+Once you fill out the form and submit it, a configuration file will be generated. You can review it on-screen and download it.
+
+Autosave:
+If you refresh the page, the form will repopulate with the data saved in your browser’s localStorage (unless you submit the form, which clears the cache).
+
+Configuration
+Settings:
+The project settings are located in auto_prov_project/settings.py. Update the settings as needed for production (e.g., DEBUG, ALLOWED_HOSTS, database configuration).
+
+Templates and Static Files:
+Templates specific to your service provisioning functionality are located in services/templates/services/. Static files for the app (CSS, JavaScript, images) are located in services/static/services/.
+
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the repository.
+Create a new branch for your feature or bugfix.
+Make your changes and commit them with clear commit messages.
+Push your changes to your fork.
+Create a pull request with a description of your changes.
+License
+This project is licensed under the MIT License.
